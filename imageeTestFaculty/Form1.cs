@@ -17,6 +17,7 @@ namespace imageeTestFaculty
         public Form1()
         {
             InitializeComponent();
+
         }
 
         //*******************************************************
@@ -90,6 +91,11 @@ namespace imageeTestFaculty
             firstNameTextBox.DataBindings.Add("Text", facultyTable, "FirstName");
             lastNameTextBox.DataBindings.Add("Text", facultyTable, "LastName");
             pictureLabel.DataBindings.Add("Text", facultyTable, "photo");
+            degreeTextBox.DataBindings.Add("Text", facultyTable, "Degree");
+            locationTextBox.DataBindings.Add("Text", facultyTable, "Location");
+            campusComboBox.DataBindings.Add("Text", facultyTable, "Campus");
+            startYearTextBox.DataBindings.Add("Text", facultyTable, "StartYear");
+
         }
         // a loop to extact faculty last name, first name, and ID to be displayed in a combo box
         private void firstFill()
@@ -199,6 +205,10 @@ namespace imageeTestFaculty
             pictureLabel.Text = "";
             firstNameTextBox.ReadOnly = false;
             lastNameTextBox.ReadOnly = false;
+            degreeTextBox.ReadOnly = false;
+            locationTextBox.ReadOnly = false;
+            campusComboBox.Enabled = true;
+            startYearTextBox.ReadOnly = false;
 
             facultyComboBox.Text = "";
             facultyComboBox.SelectedText = "";

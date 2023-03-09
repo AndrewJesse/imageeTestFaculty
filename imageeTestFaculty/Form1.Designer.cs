@@ -49,6 +49,14 @@ namespace imageeTestFaculty
             this.listLabeel = new System.Windows.Forms.Label();
             this.facultyComboBox = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.degreeTextBox = new System.Windows.Forms.TextBox();
+            this.locationTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.startYearTextBox = new System.Windows.Forms.TextBox();
+            this.campusComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.facultyGroupBox.SuspendLayout();
             this.proceessGroupBox.SuspendLayout();
             this.facultyImageGroupBox.SuspendLayout();
@@ -57,6 +65,14 @@ namespace imageeTestFaculty
             // 
             // facultyGroupBox
             // 
+            this.facultyGroupBox.Controls.Add(this.label6);
+            this.facultyGroupBox.Controls.Add(this.label5);
+            this.facultyGroupBox.Controls.Add(this.campusComboBox);
+            this.facultyGroupBox.Controls.Add(this.startYearTextBox);
+            this.facultyGroupBox.Controls.Add(this.label4);
+            this.facultyGroupBox.Controls.Add(this.label1);
+            this.facultyGroupBox.Controls.Add(this.locationTextBox);
+            this.facultyGroupBox.Controls.Add(this.degreeTextBox);
             this.facultyGroupBox.Controls.Add(this.proceessGroupBox);
             this.facultyGroupBox.Controls.Add(this.facultyImageGroupBox);
             this.facultyGroupBox.Controls.Add(this.label3);
@@ -69,7 +85,7 @@ namespace imageeTestFaculty
             this.facultyGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.facultyGroupBox.Location = new System.Drawing.Point(2, -3);
             this.facultyGroupBox.Name = "facultyGroupBox";
-            this.facultyGroupBox.Size = new System.Drawing.Size(887, 526);
+            this.facultyGroupBox.Size = new System.Drawing.Size(709, 504);
             this.facultyGroupBox.TabIndex = 0;
             this.facultyGroupBox.TabStop = false;
             this.facultyGroupBox.Text = "Faculty Portal ";
@@ -82,9 +98,9 @@ namespace imageeTestFaculty
             this.proceessGroupBox.Controls.Add(this.addButton);
             this.proceessGroupBox.Controls.Add(this.cancelButton);
             this.proceessGroupBox.Controls.Add(this.saveButton);
-            this.proceessGroupBox.Location = new System.Drawing.Point(14, 384);
+            this.proceessGroupBox.Location = new System.Drawing.Point(14, 397);
             this.proceessGroupBox.Name = "proceessGroupBox";
-            this.proceessGroupBox.Size = new System.Drawing.Size(851, 100);
+            this.proceessGroupBox.Size = new System.Drawing.Size(690, 100);
             this.proceessGroupBox.TabIndex = 23;
             this.proceessGroupBox.TabStop = false;
             this.proceessGroupBox.Text = "Process";
@@ -92,7 +108,7 @@ namespace imageeTestFaculty
             // exitButton
             // 
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(717, 47);
+            this.exitButton.Location = new System.Drawing.Point(522, 47);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(89, 23);
             this.exitButton.TabIndex = 26;
@@ -115,7 +131,7 @@ namespace imageeTestFaculty
             // 
             this.cancelButton.Enabled = false;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(455, 49);
+            this.cancelButton.Location = new System.Drawing.Point(347, 47);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(86, 23);
             this.cancelButton.TabIndex = 24;
@@ -126,7 +142,7 @@ namespace imageeTestFaculty
             // 
             this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(243, 49);
+            this.saveButton.Location = new System.Drawing.Point(174, 47);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(86, 23);
             this.saveButton.TabIndex = 23;
@@ -142,9 +158,9 @@ namespace imageeTestFaculty
             this.facultyImageGroupBox.Controls.Add(this.pictureLabel);
             this.facultyImageGroupBox.Controls.Add(this.loadImageButton);
             this.facultyImageGroupBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.facultyImageGroupBox.Location = new System.Drawing.Point(560, 28);
+            this.facultyImageGroupBox.Location = new System.Drawing.Point(381, 105);
             this.facultyImageGroupBox.Name = "facultyImageGroupBox";
-            this.facultyImageGroupBox.Size = new System.Drawing.Size(321, 281);
+            this.facultyImageGroupBox.Size = new System.Drawing.Size(323, 277);
             this.facultyImageGroupBox.TabIndex = 22;
             this.facultyImageGroupBox.TabStop = false;
             this.facultyImageGroupBox.Text = "Faculty File Image";
@@ -199,7 +215,7 @@ namespace imageeTestFaculty
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(10, 187);
+            this.label3.Location = new System.Drawing.Point(11, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 16);
             this.label3.TabIndex = 21;
@@ -209,7 +225,7 @@ namespace imageeTestFaculty
             // 
             this.lastNameTextBox.BackColor = System.Drawing.Color.White;
             this.lastNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastNameTextBox.Location = new System.Drawing.Point(14, 206);
+            this.lastNameTextBox.Location = new System.Drawing.Point(14, 193);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.ReadOnly = true;
             this.lastNameTextBox.Size = new System.Drawing.Size(329, 20);
@@ -219,7 +235,7 @@ namespace imageeTestFaculty
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(287, 25);
+            this.titleLabel.Location = new System.Drawing.Point(274, 45);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(164, 25);
             this.titleLabel.TabIndex = 19;
@@ -239,7 +255,7 @@ namespace imageeTestFaculty
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 132);
+            this.label2.Location = new System.Drawing.Point(11, 132);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 2;
@@ -261,7 +277,7 @@ namespace imageeTestFaculty
             this.facultyComboBox.FormattingEnabled = true;
             this.facultyComboBox.Location = new System.Drawing.Point(14, 105);
             this.facultyComboBox.Name = "facultyComboBox";
-            this.facultyComboBox.Size = new System.Drawing.Size(503, 24);
+            this.facultyComboBox.Size = new System.Drawing.Size(329, 24);
             this.facultyComboBox.TabIndex = 0;
             this.facultyComboBox.SelectedIndexChanged += new System.EventHandler(this.facultyComboBox_SelectedIndexChanged);
             // 
@@ -272,11 +288,98 @@ namespace imageeTestFaculty
             this.textBox1.Size = new System.Drawing.Size(329, 20);
             this.textBox1.TabIndex = 4;
             // 
+            // degreeTextBox
+            // 
+            this.degreeTextBox.BackColor = System.Drawing.Color.White;
+            this.degreeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.degreeTextBox.Location = new System.Drawing.Point(14, 235);
+            this.degreeTextBox.Name = "degreeTextBox";
+            this.degreeTextBox.ReadOnly = true;
+            this.degreeTextBox.Size = new System.Drawing.Size(329, 20);
+            this.degreeTextBox.TabIndex = 24;
+            // 
+            // locationTextBox
+            // 
+            this.locationTextBox.BackColor = System.Drawing.Color.White;
+            this.locationTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.locationTextBox.Location = new System.Drawing.Point(14, 277);
+            this.locationTextBox.Name = "locationTextBox";
+            this.locationTextBox.ReadOnly = true;
+            this.locationTextBox.Size = new System.Drawing.Size(329, 20);
+            this.locationTextBox.TabIndex = 25;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Degree";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 258);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 16);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Location";
+            // 
+            // startYearTextBox
+            // 
+            this.startYearTextBox.BackColor = System.Drawing.Color.White;
+            this.startYearTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startYearTextBox.Location = new System.Drawing.Point(14, 362);
+            this.startYearTextBox.Name = "startYearTextBox";
+            this.startYearTextBox.ReadOnly = true;
+            this.startYearTextBox.Size = new System.Drawing.Size(148, 20);
+            this.startYearTextBox.TabIndex = 28;
+            // 
+            // campusComboBox
+            // 
+            this.campusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.campusComboBox.Enabled = false;
+            this.campusComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campusComboBox.FormattingEnabled = true;
+            this.campusComboBox.ItemHeight = 13;
+            this.campusComboBox.Items.AddRange(new object[] {
+            "Cascade",
+            "Rock Creek",
+            "Southeast",
+            "Sylvania"});
+            this.campusComboBox.Location = new System.Drawing.Point(14, 319);
+            this.campusComboBox.Name = "campusComboBox";
+            this.campusComboBox.Size = new System.Drawing.Size(121, 21);
+            this.campusComboBox.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 343);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 16);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Start Year";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 300);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 16);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Campus";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 647);
+            this.ClientSize = new System.Drawing.Size(718, 506);
             this.Controls.Add(this.facultyGroupBox);
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -317,6 +420,14 @@ namespace imageeTestFaculty
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.GroupBox facultyImageGroupBox;
         private System.Windows.Forms.GroupBox proceessGroupBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox campusComboBox;
+        private System.Windows.Forms.TextBox startYearTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox locationTextBox;
+        private System.Windows.Forms.TextBox degreeTextBox;
     }
 }
 
