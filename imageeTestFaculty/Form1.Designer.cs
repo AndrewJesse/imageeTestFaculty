@@ -53,10 +53,11 @@ namespace imageeTestFaculty
             this.locationTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.startYearTextBox = new System.Windows.Forms.TextBox();
             this.campusComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.startYearDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.facultyGroupBox.SuspendLayout();
             this.proceessGroupBox.SuspendLayout();
             this.facultyImageGroupBox.SuspendLayout();
@@ -65,10 +66,10 @@ namespace imageeTestFaculty
             // 
             // facultyGroupBox
             // 
+            this.facultyGroupBox.Controls.Add(this.startYearDateTimePicker);
             this.facultyGroupBox.Controls.Add(this.label6);
             this.facultyGroupBox.Controls.Add(this.label5);
             this.facultyGroupBox.Controls.Add(this.campusComboBox);
-            this.facultyGroupBox.Controls.Add(this.startYearTextBox);
             this.facultyGroupBox.Controls.Add(this.label4);
             this.facultyGroupBox.Controls.Add(this.label1);
             this.facultyGroupBox.Controls.Add(this.locationTextBox);
@@ -94,6 +95,7 @@ namespace imageeTestFaculty
             // proceessGroupBox
             // 
             this.proceessGroupBox.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.proceessGroupBox.Controls.Add(this.deleteButton);
             this.proceessGroupBox.Controls.Add(this.exitButton);
             this.proceessGroupBox.Controls.Add(this.addButton);
             this.proceessGroupBox.Controls.Add(this.cancelButton);
@@ -108,7 +110,7 @@ namespace imageeTestFaculty
             // exitButton
             // 
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(522, 47);
+            this.exitButton.Location = new System.Drawing.Point(555, 47);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(89, 23);
             this.exitButton.TabIndex = 26;
@@ -131,7 +133,7 @@ namespace imageeTestFaculty
             // 
             this.cancelButton.Enabled = false;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(347, 47);
+            this.cancelButton.Location = new System.Drawing.Point(433, 47);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(86, 23);
             this.cancelButton.TabIndex = 24;
@@ -142,7 +144,7 @@ namespace imageeTestFaculty
             // 
             this.saveButton.Enabled = false;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(174, 47);
+            this.saveButton.Location = new System.Drawing.Point(164, 47);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(86, 23);
             this.saveButton.TabIndex = 23;
@@ -328,16 +330,6 @@ namespace imageeTestFaculty
             this.label4.TabIndex = 27;
             this.label4.Text = "Location";
             // 
-            // startYearTextBox
-            // 
-            this.startYearTextBox.BackColor = System.Drawing.Color.White;
-            this.startYearTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startYearTextBox.Location = new System.Drawing.Point(14, 362);
-            this.startYearTextBox.Name = "startYearTextBox";
-            this.startYearTextBox.ReadOnly = true;
-            this.startYearTextBox.Size = new System.Drawing.Size(148, 20);
-            this.startYearTextBox.TabIndex = 28;
-            // 
             // campusComboBox
             // 
             this.campusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -346,6 +338,7 @@ namespace imageeTestFaculty
             this.campusComboBox.FormattingEnabled = true;
             this.campusComboBox.ItemHeight = 13;
             this.campusComboBox.Items.AddRange(new object[] {
+            "",
             "Cascade",
             "Rock Creek",
             "Southeast",
@@ -374,6 +367,28 @@ namespace imageeTestFaculty
             this.label6.Size = new System.Drawing.Size(58, 16);
             this.label6.TabIndex = 31;
             this.label6.Text = "Campus";
+            // 
+            // startYearDateTimePicker
+            // 
+            this.startYearDateTimePicker.CustomFormat = "";
+            this.startYearDateTimePicker.Enabled = false;
+            this.startYearDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startYearDateTimePicker.Location = new System.Drawing.Point(14, 362);
+            this.startYearDateTimePicker.Name = "startYearDateTimePicker";
+            this.startYearDateTimePicker.ShowUpDown = true;
+            this.startYearDateTimePicker.Size = new System.Drawing.Size(195, 20);
+            this.startYearDateTimePicker.TabIndex = 32;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.Location = new System.Drawing.Point(300, 47);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(86, 23);
+            this.deleteButton.TabIndex = 27;
+            this.deleteButton.Text = "&Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // Form1
             // 
@@ -423,11 +438,12 @@ namespace imageeTestFaculty
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox campusComboBox;
-        private System.Windows.Forms.TextBox startYearTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox locationTextBox;
         private System.Windows.Forms.TextBox degreeTextBox;
+        private System.Windows.Forms.DateTimePicker startYearDateTimePicker;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 

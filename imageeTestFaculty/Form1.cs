@@ -46,11 +46,8 @@ namespace imageeTestFaculty
         //specific) or other bindable class and the controls they are bound to           
         CurrencyManager facultyManager;
 
-        OleDbCommand addNewFacultyCommand;
+
         //**********************************************
-
-
-
         private void Form1_Load(object sender, EventArgs e)
 
         {
@@ -94,8 +91,7 @@ namespace imageeTestFaculty
             degreeTextBox.DataBindings.Add("Text", facultyTable, "Degree");
             locationTextBox.DataBindings.Add("Text", facultyTable, "Location");
             campusComboBox.DataBindings.Add("Text", facultyTable, "Campus");
-            startYearTextBox.DataBindings.Add("Text", facultyTable, "StartYear");
-
+            startYearDateTimePicker.DataBindings.Add("Text", facultyTable, "StartYear");
         }
         // a loop to extact faculty last name, first name, and ID to be displayed in a combo box
         private void firstFill()
@@ -128,7 +124,6 @@ namespace imageeTestFaculty
         {
             return (lastName + ", " + firstName + " (" + facultyID + ")");
         }
-
         //a method that is used to display images according to the name of image
         private void ShowPhoto()
         {
@@ -197,7 +192,7 @@ namespace imageeTestFaculty
 
         private void addButton_Click(object sender, EventArgs e)
         {
-           //will make the textboxes ready for typing
+            //will make the textboxes ready for typing
             newFaculty = true;
             firstNameTextBox.Text = null;
             lastNameTextBox.Text = null;
@@ -208,7 +203,12 @@ namespace imageeTestFaculty
             degreeTextBox.ReadOnly = false;
             locationTextBox.ReadOnly = false;
             campusComboBox.Enabled = true;
-            startYearTextBox.ReadOnly = false;
+            startYearDateTimePicker.Enabled = true;
+
+            degreeTextBox.Text = "";
+            locationTextBox.Text = "";
+            campusComboBox.SelectedIndex = 0;
+            startYearDateTimePicker.Text = "";
 
             facultyComboBox.Text = "";
             facultyComboBox.SelectedText = "";
@@ -222,17 +222,68 @@ namespace imageeTestFaculty
         //inserts the input to the table
         private void saveButton_Click(object sender, EventArgs e)
         {
-            addNewFacultyCommand = new OleDbCommand(
-            "INSERT INTO faculty(firstName, lastName, photo)" +
-                "VALUES(@firstname, @lastname,  @photo)", facultyConnection);
+            // Check that all required fields are filled in
+            if (String.IsNullOrWhiteSpace(firstNameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a first name.");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(lastNameTextBox.Text))
+            {
+                MessageBox.Show("Please enter a last name.");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(degreeTextBox.Text))
+            {
+                MessageBox.Show("Please enter a degree.");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(locationTextBox.Text))
+            {
+                MessageBox.Show("Please enter a location.");
+                return;
+            }
+            if (campusComboBox.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select a campus.");
+                return;
+            }
+            if (facultyPictureBox.Image == null)
+            {
+                MessageBox.Show("Please load a picture");
+                return;
+            }
+
+
+            // Save the faculty record to the database
+            OleDbCommand addNewFacultyCommand = new OleDbCommand(
+                "INSERT INTO faculty(firstName, lastName, photo, degree, location, campus, startyear)" +
+                    "VALUES(@firstname, @lastname,  @photo, @degree, @location, @campus, @startyear)", facultyConnection);
 
             addNewFacultyCommand.Parameters.AddWithValue("@firstname", firstNameTextBox.Text);
             addNewFacultyCommand.Parameters.AddWithValue("@lastname", lastNameTextBox.Text);
-
             addNewFacultyCommand.Parameters.AddWithValue("@photo", (pictureLabel.Text));
-            addNewFacultyCommand.ExecuteNonQuery();
+            addNewFacultyCommand.Parameters.AddWithValue("@degree", (degreeTextBox.Text));
+            addNewFacultyCommand.Parameters.AddWithValue("@location", (locationTextBox.Text));
+            addNewFacultyCommand.Parameters.AddWithValue("@campus", (campusComboBox.SelectedItem));
+            addNewFacultyCommand.Parameters.AddWithValue("@startyear", (startYearDateTimePicker.Value));
 
+            try
+            {
+                addNewFacultyCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving faculty record: " + ex.Message);
+                return;
+            }
 
+            refreshUI(sender, e);
+
+        }
+        private void refreshUI(object sender, EventArgs e)
+        {
+            // Reset the UI controls to default state
             saveButton.Enabled = false;
             cancelButton.Enabled = false;
             loadImageButton.Visible = false;
@@ -273,7 +324,37 @@ namespace imageeTestFaculty
                 MessageBox.Show("Nothing to remove");
             }
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Show confirmation message
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this faculty?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    // Get the faculty ID of the selected faculty
+                    int facultyID = (int)facultyTable.Rows[facultyManager.Position]["facultyID"];
+
+                    // Delete the faculty using an SQL DELETE statement
+                    OleDbCommand deleteCommand = new OleDbCommand("DELETE FROM faculty WHERE facultyID = @facultyID", facultyConnection);
+                    deleteCommand.Parameters.AddWithValue("@facultyID", facultyID);
+                    deleteCommand.ExecuteNonQuery();
+
+                    // Refresh the facultyTable
+                    facultyTable.Clear();
+                    facultyAdapter.Fill(facultyTable);
+
+                    // Update the facultyComboBox
+                    facultyComboBox.Items.Clear();
+                    fillFaculty();
+                    facultyComboBox.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while attempting to delete the selected faculty member: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
-    
-
